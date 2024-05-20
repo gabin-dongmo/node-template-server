@@ -1,7 +1,5 @@
-// src\routes.ts
-
 import { Router } from 'express';
-import { TodoRoutes } from './features/todos';
+import { TodoRoutes } from './module.todos';
 
 export class AppRoutes {
 	static get routes(): Router {

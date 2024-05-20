@@ -1,6 +1,6 @@
 # Node Template REST API
 
-This reporsitory contains a template for projects with Node, Express, Typescript. The test environment has been configured using Jest, and ESLint and Prettier have been integrated to set code style definitions. You can find the step-by-step construction of this project in this article:
+This repository contains a template for projects with Node, Express, Typescript. The test environment has been configured using Jest, and ESLint and Prettier have been integrated to set code style definitions. You can find the step-by-step construction of this project in this article:
 
 [Boilerplate for your Node projects with Express](https://baguilar6174.medium.com/boilerplate-for-your-node-projects-with-express-add98ea89c9f)
 
@@ -57,31 +57,30 @@ node-template-server/
 ├── dist/
 ├── node_modules/
 ├── src/
-│   ├── core/
+│   ├── common/
 │   │   ├── config/
 │   │   ├── constants/
-│   │   └── errors/
-│   ├── features/
-│   │   ├── shared/
-│   │   │   └── presentation/
-│   │   │       └── middlewares/
+│   │   ├── domain/
+│   │   ├── errors/
+│   │   ├── middlewares/
+│   │   └── types/
+│   │
+│   ├── module.todos/
+│   │   ├── domain/
+│   │   │   ├── datasources/
+│   │   │   ├── dtos/
+│   │   │   ├── entities/
+│   │   │   ├── repositories/
+│   │   │   └── useCases/
 │   │   │
-│   │   ├── todos/
-│   │   │   ├── domain/
-│   │   │   │   ├── datasources/
-│   │   │   │   ├── dtos/
-│   │   │   │   ├── entities/
-│   │   │   │   ├── repositories/
-│   │   │   │   └── usecases/
-│   │   │   │
-│   │   │   ├── infrastructure/
-│   │   │   │   ├── datasource.impl.ts
-│   │   │   │   └── repository.impl.ts
-│   │   │   │
-│   │   │   └── presentation/
-│   │   │       ├── controller.ts
-│   │   │       └── routes.ts
-│   │   └── ...
+│   │   ├── infrastructure/
+│   │   │   ├── datasource.impl.ts
+│   │   │   └── repository.impl.ts
+│   │   │
+│   │   └── presentation/
+│   │       ├── controller.ts
+│   │       └── routes.ts
+│   └── ...
 │   ├── app.test.ts
 │   ├── app.ts
 │   ├── routes.ts
@@ -141,4 +140,4 @@ The application of Clean Architecture allows you to maintain a clear separation 
 
 - Website - [www.bryan-aguilar.com](https://www.bryan-aguilar.com/)
 - Medium - [baguilar6174](https://baguilar6174.medium.com/)
-- LinkeIn - [baguilar6174](https://www.linkedin.com/in/baguilar6174)
+- LinkedIn - [baguilar6174](https://www.linkedin.com/in/baguilar6174)

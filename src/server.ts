@@ -1,11 +1,8 @@
-// src\server.ts
-
 import express, { type Router, type Request, type Response, type NextFunction } from 'express';
 import compression from 'compression';
 import rateLimit from 'express-rate-limit';
 
-import { HttpCode, ONE_HUNDRED, ONE_THOUSAND, SIXTY, AppError } from './core';
-import { CustomMiddlewares, ErrorMiddleware } from './features/shared';
+import { HttpCode, ONE_HUNDRED, ONE_THOUSAND, SIXTY, AppError, CustomMiddlewares, ErrorMiddleware } from './common';
 
 interface ServerOptions {
 	port: number;

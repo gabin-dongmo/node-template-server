@@ -1,6 +1,6 @@
 {
 	"name": "node-template-server",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "Boilerplate Node projects with Express, Typescript and clean architecture",
 	"main": "index.js",
 	"scripts": {
@@ -8,26 +8,11 @@
 		"test:watch": "jest --watchAll",
 		"test:coverage": "jest --coverage",
 		"dev": "ts-node-dev --respawn --clear --transpile-only --ignore-watch node_modules ./src/app.ts",
+		"lint": "eslint ./src --ext .ts,.tsx",
 		"build": "rimraf ./dist && tsc",
 		"start": "yarn build && node dist/app.js"
 	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/baguilar6174/node-template-server.git"
-	},
-	"keywords": [
-		"API",
-		"REST",
-		"Express",
-		"Node",
-		"Clean Architecture"
-	],
-	"author": "Bryan Aguilar",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/baguilar6174/node-template-server/issues"
-	},
-	"homepage": "https://github.com/baguilar6174/node-template-server#readme",
+	"license": "MIT",
 	"devDependencies": {
 		"@types/compression": "^1.7.5",
 		"@types/express": "^4.17.21",

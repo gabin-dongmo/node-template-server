@@ -1,6 +1,4 @@
-// src\app.ts
-
-import { envs } from './core';
+import { envs } from './common';
 import { AppRoutes } from './routes';
 import { Server } from './server';
 
