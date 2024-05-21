@@ -29,7 +29,6 @@ interface RequestQuery {
 }
 
 export class TodoController {
-	//* Dependency injection
 	constructor(private readonly repository: TodoRepository) {}
 
 	public getAll = (
