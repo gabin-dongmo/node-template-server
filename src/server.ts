@@ -1,6 +1,7 @@
 import compression from 'compression';
 import express, { type Router, type Request, type Response } from 'express';
-import { HttpCode, setCors, writeInConsole, handleError, setRateLimit, notFoundHandler } from './common';
+import { StatusCodes } from 'http-status-codes';
+import { setCors, writeInConsole, handleError, setRateLimit, notFoundHandler } from './common';
 
 interface ServerOptions {
 	port: number;
@@ -29,7 +30,7 @@ export class Server {
 		this.app.use(writeInConsole);
 		this.app.use(setCors);
 		this.app.get('/', (_req: Request, res: Response) =>
-			res.status(HttpCode.OK).send({
+			res.status(StatusCodes.OK).send({
 				message: `Welcome to Initial API! \n Endpoints available at http://localhost:${this.port}/`
 			})
 		);

@@ -1,5 +1,5 @@
 import { type NextFunction, type Request, type Response } from 'express';
-
+import { StatusCodes } from 'http-status-codes';
 import {
 	CreateTodo,
 	DeleteTodo,
@@ -12,7 +12,7 @@ import {
 	type TodoEntity,
 	type TodoRepository
 } from '../domain';
-import { HttpCode, ONE, PaginationDto, type PaginationResponseEntity, type SuccessResponse, TEN } from '../../common';
+import { ONE, PaginationDto, type PaginationResponseEntity, type SuccessResponse, TEN } from '../../common';
 
 interface Params {
 	id: string;
@@ -64,7 +64,7 @@ export class TodoController {
 		const createDto = new CreateTodoDto(text);
 		new CreateTodo(this.repository)
 			.execute(createDto)
-			.then((result) => res.status(HttpCode.CREATED).json({ data: result }))
+			.then((result) => res.status(StatusCodes.CREATED).json({ data: result }))
 			.catch(next);
 	};
 
