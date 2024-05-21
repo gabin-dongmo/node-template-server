@@ -10,13 +10,13 @@ export class TodoRoutes {
 		//* This datasource can be change
 		const datasource = new TodoDatasourceImpl();
 		const repository = new TodoRepositoryImpl(datasource);
-		const controller = new TodoController(repository);
+		const { getAll, getById, create, update, discard } = new TodoController(repository);
 
-		router.get('/', controller.getAll);
-		router.get('/:id', controller.getById);
-		router.post('/', controller.create);
-		router.put('/:id', controller.update);
-		router.delete('/:id', controller.delete);
+		router.get('/', getAll);
+		router.get('/:id', getById);
+		router.post('/', create);
+		router.put('/:id', update);
+		router.delete('/:id', discard);
 
 		// rest of operations
 		// ...
