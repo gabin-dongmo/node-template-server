@@ -19,7 +19,7 @@ export class TodoRepositoryImpl implements TodoRepository {
 		return await this.datasource.getAll(pagination);
 	}
 
-	async getById(getByIdDto: GetTodoByIdDto): Promise<TodoEntity> {
+	async getById(getByIdDto: GetTodoByIdDto): Promise<TodoEntity | undefined> {
 		return await this.datasource.getById(getByIdDto);
 	}
 

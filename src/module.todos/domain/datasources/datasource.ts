@@ -7,7 +7,7 @@ export abstract class TodoDatasource {
 
 	abstract getAll(pagination: PaginationDto): Promise<PaginationResponseEntity<TodoEntity[]>>;
 
-	abstract getById(getByIdDto: GetTodoByIdDto): Promise<TodoEntity>;
+	abstract getById(getByIdDto: GetTodoByIdDto): Promise<TodoEntity | undefined>;
 
 	abstract update(updateDto: UpdateTodoDto): Promise<TodoEntity>;
 

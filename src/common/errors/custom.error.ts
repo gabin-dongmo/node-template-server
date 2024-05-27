@@ -1,15 +1,15 @@
-import { StatusCodes } from 'http-status-codes';
+import StatusCode from 'status-code-enum';
 
 interface AppErrorArgs {
 	name?: string;
-	statusCode: StatusCodes;
+	statusCode: StatusCode;
 	message: string;
 	isOperational?: boolean;
 }
 
 export class AppError extends Error {
 	public readonly name: string;
-	public readonly statusCode: StatusCodes;
+	public readonly statusCode: StatusCode;
 	public readonly isOperational: boolean = true;
 
 	private constructor(args: AppErrorArgs) {
@@ -23,22 +23,22 @@ export class AppError extends Error {
 	}
 
 	static badRequest(message: string): AppError {
-		return new AppError({ message, statusCode: StatusCodes.BAD_REQUEST });
+		return new AppError({ message, statusCode: StatusCode.ClientErrorBadRequest });
 	}
 
 	static unauthorized(message: string): AppError {
-		return new AppError({ message, statusCode: StatusCodes.UNAUTHORIZED });
+		return new AppError({ message, statusCode: StatusCode.ClientErrorUnauthorized });
 	}
 
 	static forbidden(message: string): AppError {
-		return new AppError({ message, statusCode: StatusCodes.FORBIDDEN });
+		return new AppError({ message, statusCode: StatusCode.ClientErrorForbidden });
 	}
 
 	static notFound(message: string): AppError {
-		return new AppError({ message, statusCode: StatusCodes.NOT_FOUND });
+		return new AppError({ message, statusCode: StatusCode.ClientErrorNotFound });
 	}
 
 	static internalServer(message: string): AppError {
-		return new AppError({ message, statusCode: StatusCodes.INTERNAL_SERVER_ERROR });
+		return new AppError({ message, statusCode: StatusCode.ServerErrorInternal });
 	}
 }

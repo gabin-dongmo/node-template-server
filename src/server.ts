@@ -1,7 +1,10 @@
+import 'express-async-errors';
 import compression from 'compression';
 import express, { type Router, type Request, type Response } from 'express';
-import { StatusCodes } from 'http-status-codes';
-import { setCors, writeInConsole, handleError, setRateLimit, notFoundHandler } from './common';
+import StatusCode from 'status-code-enum';
+import { setCors, handleError, setRateLimit, notFoundHandler } from './common';
+import { Log } from './log';
+import type { Logger } from 'winston';
 
 interface ServerOptions {
 	port: number;
@@ -14,12 +17,14 @@ export class Server {
 	private readonly port: number;
 	private readonly routes: Router;
 	private readonly apiPrefix: string;
+	private readonly logger: Logger;
 
 	constructor(options: ServerOptions) {
 		const { port, routes, apiPrefix } = options;
 		this.port = port;
 		this.routes = routes;
 		this.apiPrefix = apiPrefix;
+		this.logger = Log.getInstance();
 	}
 
 	async start(): Promise<void> {
@@ -27,10 +32,9 @@ export class Server {
 		this.app.use(express.urlencoded({ extended: true }));
 		this.app.use(compression());
 		this.app.use(setRateLimit());
-		this.app.use(writeInConsole);
 		this.app.use(setCors);
 		this.app.get('/', (_req: Request, res: Response) =>
-			res.status(StatusCodes.OK).send({
+			res.status(StatusCode.SuccessOK).send({
 				message: `Welcome to Initial API! \n Endpoints available at http://localhost:${this.port}/`
 			})
 		);
@@ -40,7 +44,7 @@ export class Server {
 		this.app.use(handleError);
 
 		this.app.listen(this.port, () => {
-			console.log(`Server running on port ${this.port}...`);
+			this.logger.info(`Server running on port ${this.port}...`);
 		});
 	}
 }

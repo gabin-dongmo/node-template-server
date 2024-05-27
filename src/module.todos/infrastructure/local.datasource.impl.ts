@@ -5,7 +5,7 @@ import {
 	type UpdateTodoDto,
 	type TodoDatasource
 } from '../domain';
-import { AppError, ONE, type PaginationDto, type PaginationResponseEntity, ZERO } from '../../common';
+import { ONE, type PaginationDto, type PaginationResponseEntity, ZERO } from '../../common';
 
 const TODOS_MOCK = [
 	{
@@ -41,9 +41,9 @@ export class TodoDatasourceImpl implements TodoDatasource {
 		};
 	}
 
-	public async getById(getByIdDto: GetTodoByIdDto): Promise<TodoEntity> {
+	public async getById(getByIdDto: GetTodoByIdDto): Promise<TodoEntity | undefined> {
 		const todo = TODOS_MOCK.find((todo) => todo.id === getByIdDto.id);
-		if (!todo) throw AppError.notFound(`Todo with id ${getByIdDto.id} not found`);
+		if (!todo) return undefined;
 		return TodoEntity.fromJson(todo);
 	}
 
