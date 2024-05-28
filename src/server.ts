@@ -5,6 +5,8 @@ import StatusCode from 'status-code-enum';
 import { setCors, handleError, setRateLimit, notFoundHandler } from './common';
 import { Log } from './log';
 import type { Logger } from 'winston';
+import swaggerUi from 'swagger-ui-express';
+import { apiDocumentation } from './docs';
 
 interface ServerOptions {
 	port: number;
@@ -38,6 +40,13 @@ export class Server {
 				message: `Welcome to Initial API! \n Endpoints available at http://localhost:${this.port}/`
 			})
 		);
+		const swaggerUiOptions = {
+			swaggerOptions: {
+				// defaultModelsExpandDepth: -1,
+				docExpansion: 'none'
+			}
+		};
+		this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(apiDocumentation, swaggerUiOptions));
 		this.app.use(this.apiPrefix, this.routes);
 		//* Handle not found routes in /api/v1/* (only if 'Public content folder' is not available)
 		this.routes.all('*', notFoundHandler);
